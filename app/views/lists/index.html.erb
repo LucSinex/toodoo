@@ -6,8 +6,7 @@
 	<% @lists.each do |list| %>
 		<div class="col-md-4 list-box">
 			<div class="list-box-contents">
-				<%= list.title.length %>
-				Back to Test
+				<%= link_to list.title, list_path(list) %>
 			</div>
 		</div>
 
@@ -18,15 +17,16 @@
 			<div class="row"></div>
 		<% end %>
 	<% end %>
+
+
+	<% if counter > 3 %>
+	  <div class="row col-md-4 list-box">
+	  	<a href="lists/new"><button type="button" class="btn btn-lg btn-primary new-list-button">+</button></a>
+		</div>
+	<% else %>
+		<div class="col-md-4 list-box">
+			<a href="lists/new"><button type="button" class="btn btn-lg btn-primary new-list-button">+</button></a>
+		</div>
+	<% end %>
+
 </div>
-
-<% if counter > 3 %>
-  <div class="row col-md-4 list-box">
-  	<a href="lists/new"><button type="button" class="btn btn-lg btn-primary new-list-button">+</button></a>
-	</div>
-<% else %>
-	<div class="col-md-4 list-box">
-		<a href="lists/new"><button type="button" class="btn btn-lg btn-primary new-list-button">+</button></a>
-	</div>
-<% end %>
-
