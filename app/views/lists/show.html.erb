@@ -10,7 +10,10 @@
 			<% @list.goals.each do |goal| %>
 				<tr>
 					<td><%= goal.content %></td>
-					<td><%= link_to "Finished?", '#' %></td>
+                                        <%= form_for goal, url: list_goal_path(@list, goal), method: :put do |f| %>
+                                          <%= f.hidden_field(:done, value: true) %>
+                                          <td><%= f.submit "Finished?" %></td>
+                                        <% end %>
 				</tr>
 			<% end %>
 
