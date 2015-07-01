@@ -1,2 +1,33 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<h1><%= @list.title %></h1>
+
+<div class="row">
+	<div class="subgoals-table">
+		<table class="table">
+
+			<th>Subgoal</th>
+			<th colspan="2"></th>
+
+			<% @list.goals.each do |goal| %>
+				<tr>
+					<td><%= goal.content %></td>
+					<td><%= link_to "Finished?", '#' %></td>
+				</tr>
+			<% end %>
+
+			<tr>
+				<%= form_for [@list, @list.goals.build] do |f| %>
+					<td><%= f.text_field :content %></td>
+					<td><%= f.submit "Create Subgoal" %></td>
+				<% end %>
+			</tr>
+
+		</table>
+	</div>
+</div>
+<br>
+
+<%= link_to "Back", root_path %>
+
+
+
+

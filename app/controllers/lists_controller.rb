@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def show
   	@list = List.find(params[:id])
+    @goal = @list.goals.new
   end
 
   def new
