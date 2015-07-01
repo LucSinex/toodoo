@@ -5,8 +5,8 @@ class ListsController < ApplicationController
   end
 
   def show
-  	@list = List.find(params[:id])
-    @goal = @list.goals.new
+        @list = List.find(params[:id])
+        # @goal = @list.goals.new
   end
 
   def new
@@ -20,6 +20,18 @@ class ListsController < ApplicationController
   	else
   		render 'new'
   	end
+  end
+
+  def complete_goal
+    @list = List.find(params[:id])
+
+    @goal = @list.goals.find(params[:goal_id])
+
+    if @goal.complete
+      redirect_to list_path(@list)
+    else
+      render 404
+    end
   end
 
   private

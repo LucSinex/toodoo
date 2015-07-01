@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root 'lists#index'
 
-  get 'goals/create'
-  get 'goals/destroy'
-
   resources :lists do
     resources :goals
   end
