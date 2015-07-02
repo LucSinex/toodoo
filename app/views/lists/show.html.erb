@@ -41,6 +41,12 @@
 				<% @list.goals.where(done: :true).each do |goal| %>
 					<tr>
 						<td><%= goal.content %></td>             
+					
+						<td>
+							<%= link_to list_goal_path(@list, goal), method: :delete do %>
+								<i class="fa fa-times fa-2" style="color:#FF6666"></i>
+							<% end %> 
+						</td> 
 					</tr>
 				<% end %>
 
