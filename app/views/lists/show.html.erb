@@ -7,12 +7,18 @@
 
 				<thead>
 					<th>Subgoal</th>
+					<th colspan="2"></th>
 				</thead>
 
 				<% @list.goals.where(done: false).each do |goal| %>
 					<tr>
 						<td><%= goal.content %></td>
-            <td><%= check_box_tag 'goal_ids[]', goal.id %></td>	              
+            <td><%= check_box_tag 'goal_ids[]', goal.id %></td>	
+            <td>
+							<%= link_to list_goal_path(@list, goal), method: :delete do %>
+								<i class="fa fa-times fa-2" style="color:#FF6666"></i>
+							<% end %> 
+						</td>         
 					</tr>
 				<% end %>
 			</table>

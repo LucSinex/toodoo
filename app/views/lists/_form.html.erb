@@ -2,7 +2,7 @@
 
   <% if @list.errors.any? %>
     <div id="error_explanation">
-      <%= pluralize(@list.errors.count, "error") %> prohibited this article from being saved:
+      <%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:
     
       <ul>
         <% @list.errors.full_messages.each do |msg| %>
@@ -24,5 +24,5 @@
 <% end %>
 
 <p>
-  <%= link_to "Index", lists_path %>
+  <%= link_to "Back", lists_path %>
 </p>

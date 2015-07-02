@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'lists#index'
 
+  get 'goals/edit' => 'goals#edit'
+
   resources :lists do
     resources :goals do
       put 'complete', on: :collection

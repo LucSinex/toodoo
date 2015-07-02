@@ -6,6 +6,10 @@ class GoalsController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:list_id])
+    @goal = Goal.find(params[:id])
+    @goal.destroy
+    redirect_to list_path(@list)
   end
 
   def update
@@ -16,6 +20,10 @@ class GoalsController < ApplicationController
     else
       render 404
     end
+  end
+
+  def edit
+    @goal = Goal.find(params[:id])
   end
 
   def complete

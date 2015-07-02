@@ -3,6 +3,8 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+/* Mixins */
+
 @mixin add-border {
 	border-radius: 25px;
 	border-color: gray-lighter;
@@ -16,6 +18,10 @@
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+@mixin background-grad {
+	background: linear-gradient(#FFFFFF, #CCCCCC);
 }
 
 .border {
@@ -32,25 +38,51 @@
 	
 }
 
+.container {
+	background: #E6E6E6;
+	border-radius: 15px;
+
+	padding: 50px;
+	padding-top: 30px;
+}
+
+.narrow {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
 .subgoals {
 	width: 400px;
+
+	@include background-grad;
 }
 
 .list-box {
 	height: 125px;
 	width: 150px;
+
+	@include background-grad;	
 	
 	@include add-border;	
 }
 
 .list-box-contents {
 	text-align: center;
+	padding-top: 10px;
 
 	@include vertical-align;
 
 	overflow: auto;
 
 	font-size:1.3em;
+}
+
+.new-list {
+	@include vertical-align;
+	text-align: center;
+	padding-top: 0px;
 }
 
 .center {
@@ -62,4 +94,18 @@
 .subgoals-table {
 	padding: 20px;
 	padding-bottom: 10px;
+}
+
+a {
+	&:link {
+		text-decoration: none;
+	}
+
+	&:hover {
+		color: black;
+	}
+}
+
+h1 {
+	letter-spacing: -2px;
 }

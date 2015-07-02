@@ -1,0 +1,15 @@
+<%= form_tag goals_edit_path(@goal) do %>
+  
+  <p>
+    <%= label_tag :content %> <br>
+    <%= text_field_tag :content %>
+  </p> 
+
+  <p>
+    <%= submit_tag "Save Goal" %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to "Back", lists_path(@list) %>
+</p>
