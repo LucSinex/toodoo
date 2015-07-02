@@ -18,6 +18,12 @@ class GoalsController < ApplicationController
     end
   end
 
+  def complete
+    @list = List.find(params[:list_id])
+    Goal.where(id: params[:goal_ids]).update_all(:done => :true)
+    redirect_to list_path(@list)
+  end
+
   private
 
   	def goal_params

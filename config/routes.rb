@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'lists#index'
 
   resources :lists do
-    resources :goals
+    resources :goals do
+      put 'complete', on: :collection
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

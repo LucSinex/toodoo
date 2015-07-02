@@ -1,5 +1,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@mixin add-border {
+	border-radius: 25px;
+	border-color: gray-lighter;
+	border-style: ridge;
+	border-width: 5px;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.border {
+	@include add-border;
+}
 
 .content {
 	width: 60%;
@@ -7,29 +28,30 @@
 	margin-right: auto;
 
 	box-sizing: border-box;
+
+	
+}
+
+.subgoals {
+	width: 400px;
 }
 
 .list-box {
-	text-align: center;	
-	vertical-align: middle;
 	height: 125px;
 	width: 150px;
-
-	border-color: gray-lighter;
-	border-style: ridge;
-	border-width: 5px;
-	border-radius: 25px;	
+	
+	@include add-border;	
 }
 
 .list-box-contents {
-	margin-top: 40px;
 	text-align: center;
-	overflow: auto;
-}
 
-.new-list-button {	
-		margin-top: 32px;
-	}
+	@include vertical-align;
+
+	overflow: auto;
+
+	font-size:1.3em;
+}
 
 .center {
 	width: 60%;
@@ -37,4 +59,7 @@
 	margin-right: auto;
 }
 
-
+.subgoals-table {
+	padding: 20px;
+	padding-bottom: 10px;
+}

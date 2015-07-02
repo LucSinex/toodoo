@@ -1,32 +1,62 @@
-<h1><%= @list.title %></h1>
+<h1><%= @list.title %></h1><br>
 
-<div class="row">
+<div class="row border subgoals">
 	<div class="subgoals-table">
-		<table class="table">
+		<%= form_tag complete_list_goals_path(@list), method: :put do %> 
+			<table class="table">
 
-			<th>Subgoal</th>
-			<th colspan="2"></th>
+				<thead>
+					<th>Subgoal</th>
+				</thead>
 
-			<% @list.goals.each do |goal| %>
-				<tr>
-					<td><%= goal.content %></td>
-                                        <%= form_for goal, url: list_goal_path(@list, goal), method: :put do |f| %>
-                                          <%= f.hidden_field(:done, value: true) %>
-                                          <td><%= f.submit "Finished?" %></td>
-                                        <% end %>
-				</tr>
-			<% end %>
-
-			<tr>
-				<%= form_for [@list, @list.goals.build] do |f| %>
-					<td><%= f.text_field :content %></td>
-					<td><%= f.submit "Create Subgoal" %></td>
+				<% @list.goals.where(done: false).each do |goal| %>
+					<tr>
+						<td><%= goal.content %></td>
+            <td><%= check_box_tag 'goal_ids[]', goal.id %></td>	              
+					</tr>
 				<% end %>
-			</tr>
+			</table>
 
-		</table>
+			<%= if @list.goals.where(done: false).any? then submit_tag "Mark as complete" end %>
+	  <% end %>
 	</div>
 </div>
+
+<br>
+
+<div class="row border subgoals">
+		<div class="subgoals-table">
+			<table class="table">
+
+				<thead>
+					<th>Completed</th>
+				</thead>
+
+				<% @list.goals.where(done: :true).each do |goal| %>
+					<tr>
+						<td><%= goal.content %></td>             
+					</tr>
+				<% end %>
+
+			</table>
+		</div>
+	</div>
+
+<br>
+
+<div class="row" style:"text-align:center">
+	<h4>Add a new subgoal:</h4>
+
+	<%= form_for [@list, @list.goals.build] do |f| %>	
+		<p>
+			<%= f.text_field :content %>
+		</p>
+		<p>
+			<%= f.submit "Create Subgoal" %>
+		</p>
+	<% end %>
+</div>
+
 <br>
 
 <%= link_to "Back", root_path %>
