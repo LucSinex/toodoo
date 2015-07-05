@@ -5,9 +5,11 @@ one:
   done: false
   priority: 1
   list_id: 
+  list: one
 
 two:
   content: MyText
   done: false
   priority: 1
   list_id: 
+  list: two
