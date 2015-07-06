@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GoalTest < ActiveSupport::TestCase
   def setup
-  	@goal = Goal.new(content: "Run a mile", done: false)
+  	@goal = goals(:one)
   end
 
   test "should be valid" do
