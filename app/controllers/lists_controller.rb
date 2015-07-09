@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   def index
-  	@lists = List.all
+    @lists = current_user.lists
   	@numrows = 1 + @lists.count / 3
   end
 
@@ -13,12 +13,8 @@ class ListsController < ApplicationController
   end
 
   def create
-  	@list = List.new(list_params)
-  	if @list.save
-  		redirect_to root_path
-  	else
-  		render 'new'
-  	end
+  	@list = current_user.lists.create(list_params)
+  	redirect_to lists_path  	
   end
 
   def edit

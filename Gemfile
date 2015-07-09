@@ -3,6 +3,9 @@ gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'font-awesome-sass'
 
+gem 'authlogic'
+gem 'bcrypt'
+
 group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'

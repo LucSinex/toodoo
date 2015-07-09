@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  root 'lists#index'
+  get 'users/new'
+  get 'users/edit'
+
+  root 'static_pages#home'
+
+  resources :user_sessions
+  get 'login' => 'user_sessions#new'
+  get 'logout' => 'user_sessions#destroy'
 
   get 'goals/edit' => 'goals#edit'
+
+  resources :users
 
   resources :lists do
     resources :goals do

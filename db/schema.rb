@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630182700) do
+ActiveRecord::Schema.define(version: 20150707170905) do
 
   create_table "goals", force: :cascade do |t|
     t.text     "content"
-    t.boolean  "done"
+    t.boolean  "done",       default: false
     t.integer  "priority"
     t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "goals", ["list_id"], name: "index_goals_on_list_id"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 20150630182700) do
     t.integer  "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "login"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end

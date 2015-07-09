@@ -10,7 +10,10 @@
 	<div class="narrow">
 		<%= render 'shared/header' %>
 	</div>
-	<div class="container narrow">		
+	<div class="container narrow">
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, id: "flash_#{name}" %>
+		<% end %>
 		<%= yield %>		
 	</div>
 
