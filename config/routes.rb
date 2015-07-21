@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :user_sessions
   get 'login' => 'user_sessions#new'
   get 'logout' => 'user_sessions#destroy'
+  resources :user_sessions  
 
   get 'goals/edit' => 'goals#edit'
 
