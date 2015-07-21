@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
 		@user_session = UserSession.new(params[:user_session])
 		if @user_session.save
 			flash[:notice] = "Successfully logged in."
-			redirect_to root_path
+			redirect_to lists_path
 		else
 			flash[:danger] = "Login was not successful."
 			render 'new'
