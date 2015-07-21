@@ -139,6 +139,8 @@ footer ul li {
   margin-left: 15px;
 }
 
+/* header */
+
 header {
 	margin-bottom: 25px;
 	padding-bottom: 5px;
@@ -150,6 +152,13 @@ header ul {
 }
 
 .navbar-brand {
+	float: left;
 	padding-left: 150px;
 	font-size: 2.5em;
+}
+
+.header-links {
+	float: right;
+	margin-right: 50px;
+	margin-top: 10px;
 }
